@@ -5,15 +5,13 @@ import Topic from './components/Topic';
 import Form from './components/Form';
 import ThankYou from './components/ThankYou';
 function App() {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isTablet, setIsTablet] = useState<boolean>(false);
   const [openTY, setOpenTY] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
-      const isMobileMediaQuery = window.matchMedia(
-        '(max-width: 1024px)'
-      ).matches;
-      setIsMobile(isMobileMediaQuery);
+      const isTablet = window.matchMedia('(max-width: 768px)').matches;
+      setIsTablet(isTablet);
     };
 
     window.addEventListener('resize', handleResize);
@@ -29,19 +27,19 @@ function App() {
     <>
       <main className='bg-brightGray min-w-full min-h-screen flex justify-center items-center text-center'>
         {!openTY ? (
-          <section className='bg-white max-w-[60%] gap-10 p-5 flex justify-between rounded-[50px] max-lg:flex-col max-lg:p-1 max-lg:rounded-none max-lg:items-center max-lg:max-w-[90%]'>
+          <section className='bg-white gap-10 p-5 flex justify-between rounded-[50px] max-md:flex-col max-md:p-1 max-md:rounded-none max-md:items-center max-md:max-w-[90%]'>
             <section
               className={`text-center flex items-center flex-col ${
-                isMobile && 'order-2'
-              } p-10 max-lg:p-0`}
+                isTablet && 'order-2'
+              } p-10 max-md:p-0`}
             >
-              <h1 className='font-bold text-6xl mb-2 max-lg:text-4xl self-start'>
+              <h1 className='font-bold text-5xl mb-2 max-md:text-3xl self-start'>
                 Stay Updated!
               </h1>
-              <p className='max-w-[300px] m-2 text-left'>
+              <p className='max-w-[300px] mb-5 mt-5 text-left'>
                 Join 60,000+ product managers receiving monthly updates on:
               </p>
-              <div className='flex flex-col self-start max-lg:self-center'>
+              <div className='flex flex-col self-start max-md:self-center'>
                 <Topic label=' Product discovery and building what matters' />
                 <Topic label='Measuring to ensure updates are a success' />
                 <Topic label=' And much more !' />
@@ -49,7 +47,7 @@ function App() {
               <Form openThankYou={setOpenTY} />
             </section>
             <div className='max-w-full'>
-              {isMobile ? (
+              {isTablet ? (
                 <img
                   className='order-1 max-w-full'
                   src={illustrationMobile}
@@ -57,7 +55,7 @@ function App() {
                 />
               ) : (
                 <img
-                  className=' min-h-full'
+                  className='min-h-full '
                   src={illustration}
                   alt='sign up illustration'
                 />

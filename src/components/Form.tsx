@@ -34,7 +34,7 @@ const Form = ({ openThankYou }: IForm) => {
         e.preventDefault();
         handleSubmit(onSubmit)();
       }}
-      className='min-w-full flex flex-col'
+      className='min-w-full flex flex-col mt-6'
     >
       <div className='flex justify-between'>
         <label className='text-sm mb-1' htmlFor='email'>
