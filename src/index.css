@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+html{
+    background-color: #37384E;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
